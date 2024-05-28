@@ -8,7 +8,7 @@ function App() {
   const [currency,setcurrency]=useState([])
 
   useEffect(()=> {
-    axios.get('https://openapiv1.coinstats.app/coins',
+    axios.get('https://openapiv1.coinstats.app/coins?limit=100',
       {headers:{'X-API-KEY': 'xw1EhDf9jYXiKBWZBcCB8CIitlId7XpT3c7qCZ5EQMA='}
     }).then(res=>setcurrency(res.data.result))
     .catch(err=>console.log(err))
@@ -40,19 +40,19 @@ function App() {
             return <tr>
               <td className='rank'>{val.rank}</td>
               <td className='logo'>
-                <a href={val.websiteUrl}>
+                <a href={val.websiteUrl} target='_blank' rel='noopener noreferrer'>
                   <img src={val.icon} alt="" />
                 </a>
-                <p>
-                  {val.name}
-                </p>
+                <a href={val.websiteUrl} target='_blank' rel='noopener noreferrer'>
+                  <p>{val.name}</p>
+                </a>
               </td>
 
               <td className='symbol'>
                 {val.symbol}
               </td>
               <td>
-                ${val.marketCap}
+                ${val.marketCap.toFixed(2)}
               </td>
               <td>${val.price.toFixed(2)}</td>
               <td>{val.availableSupply}</td>
