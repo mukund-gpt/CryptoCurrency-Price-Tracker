@@ -14,6 +14,8 @@ function App() {
     .catch(err=>console.log(err))
   },[])
 
+  //console.log(currency)
+
   return (
     <div className="App">
       <h1>Crypto Currency App</h1>
@@ -27,6 +29,8 @@ function App() {
             <th>Symbol</th>
             <th>Market Cap</th>
             <th>Price</th>
+            <th>Price BTC</th>
+            <th>Change 1w</th>
             <th>Available Supply</th>
             <th>Volume(24hr)</th>
           </tr>
@@ -55,6 +59,10 @@ function App() {
                 ${val.marketCap.toFixed(2)}
               </td>
               <td>${val.price.toFixed(2)}</td>
+              <td>{val.priceBtc.toFixed(5)}</td>
+
+              <td>{val.priceChange1w}%</td>
+
               <td>{val.availableSupply}</td>
               <td>{val.volume.toFixed(0)}</td>
             </tr>
